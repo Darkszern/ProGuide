@@ -80,8 +80,8 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "DEIN-GITHUB-USERNAME",
-      "repo": "projectguide"
+      "owner": "Darkszern",
+      "repo": "ProGuide"
     }
   }
 }
