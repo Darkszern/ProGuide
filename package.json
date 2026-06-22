@@ -1,0 +1,87 @@
+{
+  "name": "projectguide",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "ProjectGuide – begleitet Berufsschueler durch Projektarbeiten nach der IPERKA-Methode.",
+  "author": "ProjectGuide",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node scripts/copy-404.mjs",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "build:electron": "cross-env VITE_ELECTRON=true vite build",
+    "electron:dev": "concurrently -k -n vite,electron \"vite\" \"wait-on tcp:127.0.0.1:5173 && cross-env ELECTRON_START_URL=http://localhost:5173 electron .\"",
+    "dist": "npm run build:electron && electron-builder",
+    "release": "npm run build:electron && electron-builder --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@supabase/supabase-js": "^2.108.2",
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20.16.11",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "date-fns": "^3.6.0",
+    "docx": "^8.5.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.12.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "file-saver": "^2.0.5",
+    "globals": "^15.10.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
+    "lucide-react": "^0.453.0",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0",
+    "vite": "^5.4.8",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "extends": null,
+    "appId": "ch.projectguide.app",
+    "productName": "ProjectGuide",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ProjectGuide"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "DEIN-GITHUB-USERNAME",
+      "repo": "projectguide"
+    }
+  }
+}
