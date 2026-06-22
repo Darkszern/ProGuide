@@ -14,6 +14,7 @@ import { CalendarPage } from '@/pages/CalendarPage'
 import { Team } from '@/pages/Team'
 import { Files } from '@/pages/Files'
 import { SchedulePage } from '@/pages/SchedulePage'
+import { Ideas } from '@/pages/Ideas'
 import { Templates } from '@/pages/Templates'
 import { Settings } from '@/pages/Settings'
 import { Help } from '@/pages/Help'
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/dateien" element={<Files />} />
           <Route path="/zeitplan" element={<SchedulePage />} />
+          <Route path="/ideen" element={<Ideas />} />
           <Route path="/vorlagen" element={<Templates />} />
           <Route path="/einstellungen" element={<Settings />} />
           <Route path="/hilfe" element={<Help />} />

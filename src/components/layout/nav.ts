@@ -7,6 +7,7 @@ import {
   FolderOpen,
   CalendarRange,
   FileText,
+  Lightbulb,
   Settings,
   HelpCircle,
   type LucideIcon,
@@ -26,6 +27,7 @@ export const mainNav: NavItem[] = [
   { to: '/team', label: 'Team', icon: Users },
   { to: '/dateien', label: 'Dateien', icon: FolderOpen },
   { to: '/zeitplan', label: 'Zeitplan', icon: CalendarRange },
+  { to: '/ideen', label: 'Ideen', icon: Lightbulb },
   { to: '/vorlagen', label: 'Vorlagen', icon: FileText },
 ]
 

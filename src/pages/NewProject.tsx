@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect, type FormEvent } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, Sparkles, Wand2, X, Plus, Check } from 'lucide-react'
 import { Card, CardHeader } from '@/components/ui/Card'
 import { PageHeader } from '@/components/ui/PageHeader'
@@ -10,6 +10,7 @@ import { PHASES, getPhase } from '@/lib/iperka'
 import { buildSchedule } from '@/lib/schedule'
 import { formatDate } from '@/lib/utils'
 import { generatePlan, type OnboardingAnswers } from '@/lib/onboarding'
+import { saveIdea, getIdea } from '@/lib/ideas'
 import { api } from '@/data/api'
 import type { PhaseKey, ProjectType } from '@/types/db'
 
@@ -17,6 +18,7 @@ type Step = 'form' | 'review'
 
 export function NewProject() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [step, setStep] = useState<Step>('form')
   const [generating, setGenerating] = useState(false)
   const [creating, setCreating] = useState(false)
@@ -33,6 +35,17 @@ export function NewProject() {
   const [plan, setPlan] = useState<Record<PhaseKey, string[]> | null>(null)
   const [source, setSource] = useState<'ai' | 'fallback'>('fallback')
 
+  useEffect(() => {
+    const ideaId = searchParams.get('idea')
+    if (!ideaId) return
+    const idea = getIdea(ideaId)
+    if (!idea) return
+    setAnswers({ title: idea.title, goal: idea.goal, constraints: idea.constraints, deadline: idea.deadline ?? '', type: idea.type, subject: idea.subject })
+    setPlan(idea.checklistByPhase)
+    setSource(idea.source)
+    setStep('review')
+  }, [searchParams])
+
   function update<K extends keyof OnboardingAnswers>(key: K, value: OnboardingAnswers[K]) {
     setAnswers((a) => ({ ...a, [key]: value }))
   }
@@ -45,6 +58,7 @@ export function NewProject() {
       const res = await generatePlan({ ...answers, deadline: answers.deadline || null })
       setPlan(res.checklistByPhase)
       setSource(res.source)
+      saveIdea({ ...answers, deadline: answers.deadline || null }, res.checklistByPhase, res.source)
       setStep('review')
     } catch {
       setError('Plan konnte nicht erstellt werden. Bitte erneut versuchen.')
