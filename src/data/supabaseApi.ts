@@ -184,25 +184,33 @@ export const supabaseApi = {
   },
 
   async createProject(input: CreateProjectInput): Promise<string> {
+    const { data: sessionData } = await supabase.auth.getSession()
+    if (!sessionData.session) {
+      await supabase.auth.refreshSession()
+      const { data: retry } = await supabase.auth.getSession()
+      if (!retry.session) throw new Error('Sitzung abgelaufen. Bitte melde dich erneut an.')
+    }
     const owner = await uidOrThrow()
-    const project = check(
-      await supabase
-        .from('projects')
-        .insert({
-          owner_id: owner,
-          title: input.title,
-          subject: input.subject ?? null,
-          description: input.description ?? null,
-          project_type: input.project_type,
-          deadline: input.deadline,
-          join_code: generateJoinCode(),
-        })
-        .select()
-        .single(),
-    ) as Project
-    // Trigger hat Phasen + Owner-Mitgliedschaft erzeugt.
+    const projectId = crypto.randomUUID()
+    const insertRes = await supabase
+      .from('projects')
+      .insert({
+        id: projectId,
+        owner_id: owner,
+        title: input.title,
+        subject: input.subject ?? null,
+        description: input.description ?? null,
+        project_type: input.project_type,
+        deadline: input.deadline,
+        join_code: generateJoinCode(),
+      })
+    if (insertRes.error) {
+      console.error('createProject INSERT failed:', { owner, error: insertRes.error, status: insertRes.status })
+      throw new Error(insertRes.error.message)
+    }
+    // Trigger hat Phasen + Owner-Mitgliedschaft erzeugt. Kurz warten dann lesen.
     const phases = check(
-      await supabase.from('phases').select('id, key, order_index').eq('project_id', project.id),
+      await supabase.from('phases').select('id, key, order_index').eq('project_id', projectId),
     ) as Array<{ id: string; key: PhaseKey; order_index: number }>
 
     const schedule = input.deadline ? buildSchedule(input.deadline) : []
@@ -219,9 +227,9 @@ export const supabaseApi = {
       }
     }
     await supabase.from('activities').insert({
-      project_id: project.id, actor_id: owner, type: 'project_created', payload: { title: input.title },
+      project_id: projectId, actor_id: owner, type: 'project_created', payload: { title: input.title },
     })
-    return project.id
+    return projectId
   },
 
   async deleteProject(id: string): Promise<void> {
