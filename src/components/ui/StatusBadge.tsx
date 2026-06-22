@@ -57,7 +57,7 @@ export function PhaseStatusBadge({ status }: { status: PhaseStatus }) {
   return <Badge tone={m.tone}>{m.label}</Badge>
 }
 
-/** Ampel-Punkt fuer Projekt-Status. */
+/** Ampel-Punkt für Projekt-Status. */
 export function TrafficDot({ tone }: { tone: 'green' | 'amber' | 'red' }) {
   const color = tone === 'green' ? 'bg-emerald-500' : tone === 'amber' ? 'bg-amber-500' : 'bg-rose-500'
   return <span className={cn('inline-block h-2.5 w-2.5 rounded-full', color)} />

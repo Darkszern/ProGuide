@@ -1,9 +1,9 @@
-# ProjectGuide
+# ProGuide
 
-Eine Web-App, die Berufsschueler von der ersten Idee bis zur Abgabe durch eine
+Eine Web-App, die Berufsschüler von der ersten Idee bis zur Abgabe durch eine
 Projektarbeit begleitet – strukturiert nach der **IPERKA-Methode**
 (Informieren, Planen, Entscheiden, Realisieren, Kontrollieren, Auswerten).
-Fachunabhaengig, fuer Einzel- und Gruppenarbeiten.
+Fachunabhaengig, für Einzel- und Gruppenarbeiten.
 
 Oberflaeche durchgehend auf Deutsch.
 
@@ -12,7 +12,7 @@ Oberflaeche durchgehend auf Deutsch.
 - **Frontend:** React + Vite + TypeScript + Tailwind CSS, Routing mit react-router
 - **Backend / Auth / DB:** Supabase (Free Tier) – Postgres, Auth, Storage
 - **KI:** Groq (primaer) mit Google Gemini als automatischem Fallback,
-  ueber eine **Supabase Edge Function** – API-Keys liegen nie im Frontend
+  über eine **Supabase Edge Function** – API-Keys liegen nie im Frontend
 - **Export:** `docx` (Word) und `jsPDF` (PDF)
 
 ## Voraussetzungen
@@ -26,7 +26,7 @@ Oberflaeche durchgehend auf Deutsch.
 ## Schnellstart (lokal)
 
 ```bash
-# 1. Abhaengigkeiten installieren
+# 1. Abhängigkeiten installieren
 npm install
 
 # 2. Umgebungsvariablen anlegen
@@ -39,21 +39,21 @@ npm run dev
 
 > **Ohne Supabase-Konfiguration** startet die App im **Demo-Modus**: Die
 > komplette Oberflaeche ist sichtbar (mit Beispieldaten), aber es werden keine
-> echten Daten gespeichert. So kannst du das Grundgeruest sofort ansehen.
+> echten Daten gespeichert. So kannst du das Grundgerüst sofort ansehen.
 
 ## Supabase einrichten
 
 1. **Projekt anlegen** auf [supabase.com](https://supabase.com) (Region z.B. Frankfurt).
 2. **Datenbank-Schema einspielen:** Im Supabase-Dashboard unter
    *SQL Editor* den Inhalt von [`supabase/migrations/0001_init.sql`](supabase/migrations/0001_init.sql)
-   einfuegen und ausfuehren. Das legt alle Tabellen, Trigger, Row Level Security
+   einfuegen und ausführen. Das legt alle Tabellen, Trigger, Row Level Security
    und den Storage-Bucket an. Beim Anlegen eines Projekts werden die 6
    IPERKA-Phasen automatisch erzeugt.
 3. **Zugangsdaten** unter *Project Settings → API* kopieren:
    - `Project URL`  → `VITE_SUPABASE_URL`
    - `anon public`  → `VITE_SUPABASE_ANON_KEY`
 
-   Diese beiden Werte sind oeffentlich; die Absicherung erfolgt ueber RLS.
+   Diese beiden Werte sind öffentlich; die Absicherung erfolgt über RLS.
 
 ## KI / Edge Function einrichten
 
@@ -65,7 +65,7 @@ Secrets gesetzt und nur in der Edge Function `ai` verwendet.
 supabase login
 supabase link --project-ref DEIN-PROJEKT-REF
 
-# Secrets setzen (Modelle optional ueberschreibbar)
+# Secrets setzen (Modelle optional überschreibbar)
 supabase secrets set GROQ_API_KEY=...  GEMINI_API_KEY=...
 supabase secrets set GROQ_MODEL=llama-3.3-70b-versatile  GEMINI_MODEL=gemini-1.5-flash
 
@@ -75,7 +75,7 @@ supabase functions deploy ai
 
 Lokal testen lassen sich die Functions mit `supabase functions serve ai`.
 
-Die App ruft die Funktion ueber `supabase.functions.invoke('ai', …)` auf.
+Die App ruft die Funktion über `supabase.functions.invoke('ai', …)` auf.
 Faellt Groq mit 429/5xx aus, wechselt die Funktion automatisch zu Gemini.
 
 ## Deployment
@@ -89,7 +89,7 @@ npm run build      # erzeugt dist/
 - **Vercel:** Repository importieren, Framework „Vite“. Umgebungsvariablen
   `VITE_SUPABASE_URL` und `VITE_SUPABASE_ANON_KEY` setzen. `VITE_BASE` = `/`.
 - **GitHub Pages:** `VITE_BASE` auf `/<repo-name>/` setzen (z.B. `/projectguide/`)
-  und `dist/` veroeffentlichen. Da die App client-seitiges Routing nutzt, eine
+  und `dist/` veröffentlichen. Da die App client-seitiges Routing nutzt, eine
   Kopie von `index.html` als `404.html` ablegen, damit Deeplinks funktionieren
   (wird beim Build automatisch erzeugt).
 
@@ -103,12 +103,12 @@ npm run electron:dev   # Desktop-App im Entwicklungsmodus starten
 npm run dist           # Windows-Installer (.exe) nach release/ bauen
 ```
 
-Der Installer landet unter `release/ProjectGuide Setup <version>.exe`. Beim ersten
+Der Installer landet unter `release/ProGuide Setup <version>.exe`. Beim ersten
 Start installiert er sich pro Benutzer (ohne Admin-Rechte) und legt Verknuepfungen
 an.
 
 **Outlook-Integration:** In der Desktop-App oeffnet der Knopf „Zu Outlook
-hinzufuegen“ (Projekt- und Kalenderseite) die Termine direkt in Outlook. Im
+hinzufügen“ (Projekt- und Kalenderseite) die Termine direkt in Outlook. Im
 Browser wird stattdessen eine `.ics`-Datei heruntergeladen, die sich per
 Doppelklick in Outlook/Google/Apple Kalender importieren laesst.
 
@@ -117,15 +117,15 @@ Doppelklick in Outlook/Google/Apple Kalender importieren laesst.
 1. In `package.json` unter `build.publish` `owner`/`repo` auf dein GitHub-Repo
    setzen.
 2. Code auf GitHub pushen.
-3. Version in `package.json` erhoehen und veroeffentlichen:
+3. Version in `package.json` erhoehen und veröffentlichen:
    ```bash
    set GH_TOKEN=dein-github-token   # PowerShell: $env:GH_TOKEN="..."
    npm run release
    ```
    Das baut den Installer und laedt ihn als GitHub-Release hoch.
 
-Installierte Apps pruefen beim Start automatisch auf neue Releases, laden sie im
-Hintergrund und aktivieren sie beim naechsten Neustart.
+Installierte Apps prüfen beim Start automatisch auf neue Releases, laden sie im
+Hintergrund und aktivieren sie beim nächsten Neustart.
 
 > Hinweis: Ein eigenes App-Icon kannst du als `build/icon.png` (mind. 512×512)
 > ablegen – electron-builder erzeugt daraus automatisch das Windows-Icon.
@@ -156,8 +156,8 @@ supabase/
 
 ## Hinweis zur KI
 
-Der KI-Assistent unterstuetzt beim Strukturieren und Beantworten von Fragen.
-**KI kann Fehler machen – ueberpruefe wichtige Informationen.**
+Der KI-Assistent unterstützt beim Strukturieren und Beantworten von Fragen.
+**KI kann Fehler machen – überpruefe wichtige Informationen.**
 
 ## Funktionsumfang
 
@@ -167,7 +167,7 @@ Alle Kernfunktionen sind umgesetzt:
   mit Ampelsystem, Aktivitaetsverlauf, Schnellaktionen und Zeitplan-Warnung.
 - **Projekt-Onboarding mit KI**: 6 Fragen, automatische Erzeugung der 6 IPERKA-Phasen
   mit Checklisten und Zeitplan-Vorschlag (Schweizer Feiertage/Wochenenden grob).
-- **Schritt-fuer-Schritt-Fuehrung** pro Phase: „Schritt X von 6", „Warum wichtig",
+- **Schritt-für-Schritt-Führung** pro Phase: „Schritt X von 6", „Warum wichtig",
   Checkliste mit Persistenz, Phasenabschluss, Guide-Inhalte (Tipps, Fehler, Vorlagen,
   Lehrercheck) und KI-Assistent-Panel mit Schnellfragen.
 - **Aufgaben** mit Zuweisung, Status und Filter. **Team** mit Beitritts-Code.
@@ -177,8 +177,8 @@ Alle Kernfunktionen sind umgesetzt:
 - **Dateien** mit Upload (Supabase Storage), Liste und Download.
 - **Vorlagen** als herunterladbare .docx-Dokumente, **Kalender** und **Zeitplan**
   aus echten Daten, **Einstellungen** mit Profil-Bearbeitung, globale **Suche**.
-- Mobile-freundlich (Sidebar als Burger-Menue), Lade-/Fehler-/Leerzustaende ueberall.
+- Mobile-freundlich (Sidebar als Burger-Menue), Lade-/Fehler-/Leerzustaende überall.
 
-Ohne verbundenes Backend laeuft die App im **Demo-Modus** mit interaktiven
+Ohne verbundenes Backend läuft die App im **Demo-Modus** mit interaktiven
 Beispieldaten (in localStorage). Mit Supabase + KI-Keys nutzt sie das echte
 Backend und die Groq/Gemini-Edge-Function.

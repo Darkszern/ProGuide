@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]): string {
   return clsx(inputs)
 }
 
-/** Tage bis zu einem Datum (negativ = ueberfaellig). */
+/** Tage bis zu einem Datum (negativ = überfällig). */
 export function daysUntil(date: string | Date): number {
   const target = new Date(date)
   target.setHours(0, 0, 0, 0)
@@ -48,11 +48,11 @@ export function timeAgo(date: string | Date): string {
   return formatDateShort(date)
 }
 
-/** Countdown-Text fuer Deadlines. */
+/** Countdown-Text für Deadlines. */
 export function deadlineLabel(date: string | null | undefined): string {
   if (!date) return 'Keine Deadline'
   const d = daysUntil(date)
-  if (d < 0) return `${Math.abs(d)} Tag${Math.abs(d) === 1 ? '' : 'e'} ueberfaellig`
+  if (d < 0) return `${Math.abs(d)} Tag${Math.abs(d) === 1 ? '' : 'e'} überfällig`
   if (d === 0) return 'Heute faellig'
   if (d === 1) return 'Morgen faellig'
   return `in ${d} Tagen`
@@ -68,7 +68,7 @@ export function generateJoinCode(length = 6): string {
   return code
 }
 
-/** Dateigroesse lesbar, z.B. "184 KB". */
+/** Dateigröße lesbar, z.B. "184 KB". */
 export function formatBytes(bytes: number): string {
   if (!bytes) return '–'
   const units = ['B', 'KB', 'MB', 'GB']

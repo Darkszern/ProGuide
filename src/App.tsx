@@ -22,7 +22,7 @@ import { NotFound } from '@/pages/NotFound'
 export default function App() {
   return (
     <Routes>
-      {/* Oeffentliche Auth-Seiten */}
+      {/* Öffentliche Auth-Seiten */}
       <Route path="/login" element={<Login />} />
       <Route path="/registrieren" element={<Register />} />
 

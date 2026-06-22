@@ -32,7 +32,7 @@ export function Team() {
 
   return (
     <>
-      <PageHeader title="Team" subtitle="Gruppenmitglieder verwalten und ueber den Beitritts-Code einladen." />
+      <PageHeader title="Team" subtitle="Gruppenmitglieder verwalten und über den Beitritts-Code einladen." />
 
       <Card className="mb-6 max-w-xl">
         <CardHeader title="Projekt beitreten" subtitle="Gib den Code ein, den du von deiner Gruppe erhalten hast." />

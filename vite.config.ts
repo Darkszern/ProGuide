@@ -4,7 +4,7 @@ import path from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // Electron laedt ueber file:// -> relativer Basis-Pfad. Web nutzt '/'.
+  // Electron laedt über file:// -> relativer Basis-Pfad. Web nutzt '/'.
   base: process.env.VITE_ELECTRON ? './' : process.env.VITE_BASE || '/',
   define: {
     __IS_ELECTRON__: JSON.stringify(Boolean(process.env.VITE_ELECTRON)),

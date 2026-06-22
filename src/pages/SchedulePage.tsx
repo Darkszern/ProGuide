@@ -19,7 +19,7 @@ export function SchedulePage() {
     <>
       <PageHeader
         title="Zeitplan"
-        subtitle="Automatisch aus der Deadline berechnet – Wochenenden und Schweizer Feiertage werden grob beruecksichtigt."
+        subtitle="Automatisch aus der Deadline berechnet – Wochenenden und Schweizer Feiertage werden grob berücksichtigt."
       />
 
       {loading && <LoadingScreen />}

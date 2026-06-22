@@ -11,7 +11,7 @@ export interface AskAIOptions {
   json?: boolean
   /** Maximale Tokens der Antwort. */
   maxTokens?: number
-  /** Temperatur (Kreativitaet). */
+  /** Temperatur (Kreativität). */
   temperature?: number
 }
 
@@ -23,8 +23,8 @@ export interface AIResult {
 
 /**
  * Zentrale KI-Funktion. Sendet die Anfrage an die serverseitige
- * Supabase Edge Function "ai", die zuerst Groq und bei Fehler/Limit
- * automatisch Gemini nutzt. API-Keys liegen ausschliesslich serverseitig.
+ * Supabase Edge Function "ai", die Claude AI als primären Anbieter
+ * nutzt (mit Groq/Gemini-Fallback). API-Keys liegen ausschließlich serverseitig.
  */
 export async function askAI(
   messages: AIMessage[],
@@ -34,7 +34,7 @@ export async function askAI(
     return {
       text:
         'Demo-Modus: Es ist noch kein Backend verbunden. Sobald Supabase und die ' +
-        'KI-Keys konfiguriert sind, antwortet hier die echte KI (Groq mit Gemini-Fallback).',
+        'KI-Keys konfiguriert sind, antwortet hier die echte KI (Claude AI).',
       provider: 'demo',
       model: 'demo',
     }
@@ -56,7 +56,7 @@ export async function askAI(
   return data as AIResult
 }
 
-/** Bequemer Helfer fuer eine einfache Frage mit System-Kontext. */
+/** Bequemer Helfer für eine einfache Frage mit System-Kontext. */
 export async function askAISimple(
   system: string,
   user: string,

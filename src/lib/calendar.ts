@@ -33,7 +33,7 @@ export function projectEvents(full: ProjectFull): CalendarEvent[] {
       uid: `proj-${project.id}-deadline`,
       title: `Abgabe: ${project.title}`,
       date: project.deadline,
-      description: 'Projektabgabe (ProjectGuide)',
+      description: 'Projektabgabe (ProGuide)',
       reminderDays: 2,
     })
   }
@@ -52,7 +52,7 @@ export function projectEvents(full: ProjectFull): CalendarEvent[] {
   return events
 }
 
-/** Termine aller Projekte (fuer den Kalender-Gesamtexport). */
+/** Termine aller Projekte (für den Kalender-Gesamtexport). */
 export function eventsFromProjects(projects: ProjectListItem[]): CalendarEvent[] {
   const events: CalendarEvent[] = []
   for (const p of projects) {

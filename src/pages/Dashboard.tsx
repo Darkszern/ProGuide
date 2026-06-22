@@ -59,7 +59,7 @@ export function Dashboard() {
 
   return (
     <>
-      <PageHeader title="Dashboard" subtitle="Dein Ueberblick ueber alle Projekte und Aufgaben." />
+      <PageHeader title="Dashboard" subtitle="Dein Überblick über alle Projekte und Aufgaben." />
 
       {loading && <LoadingScreen />}
       {error && <ErrorState message={error} onRetry={reload} />}
@@ -100,7 +100,7 @@ function DashboardContent({ data }: { data: DashboardData }) {
           <CalendarClock className="mt-0.5 h-5 w-5 shrink-0" />
           <p>
             <strong>Zeitplan-Warnung:</strong> {critical.length} Projekt
-            {critical.length === 1 ? '' : 'e'} mit kritischer Deadline in den naechsten Tagen –{' '}
+            {critical.length === 1 ? '' : 'e'} mit kritischer Deadline in den nächsten Tagen –{' '}
             {critical.map((p) => p.title).join(', ')}.
           </p>
         </div>
@@ -121,13 +121,13 @@ function DashboardContent({ data }: { data: DashboardData }) {
         </Card>
 
         <Card>
-          <CardHeader title="Aufgaben-Uebersicht" subtitle="Nach Status" />
+          <CardHeader title="Aufgaben-Übersicht" subtitle="Nach Status" />
           <ProgressDonut segments={tasks} centerValue={String(taskSum)} centerLabel="Aufgaben" />
           <div className="mt-4"><DonutLegend segments={tasks} /></div>
         </Card>
 
         <Card>
-          <CardHeader title="Naechste Deadlines" />
+          <CardHeader title="Nächste Deadlines" />
           {upcoming.length === 0 ? (
             <p className="py-6 text-center text-sm text-ink-muted">Keine Deadlines.</p>
           ) : (

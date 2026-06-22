@@ -352,7 +352,7 @@ export async function exportProtocol(data: ExportData): Promise<void> {
           }),
           new Paragraph({ text: '' }),
           new Paragraph({
-            children: [new TextRun({ text: 'Naechste Sitzung: ', bold: true })],
+            children: [new TextRun({ text: 'Nächste Sitzung: ', bold: true })],
             alignment: AlignmentType.LEFT,
           }),
         ],

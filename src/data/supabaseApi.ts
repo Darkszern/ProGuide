@@ -1,5 +1,5 @@
 // Supabase-Implementierung der Daten-API. Spiegelt die Methoden von demoApi.
-// RLS sorgt dafuer, dass Selects automatisch auf Projekte des Nutzers begrenzt sind.
+// RLS sorgt dafür, dass Selects automatisch auf Projekte des Nutzers begrenzt sind.
 import { supabase } from '@/lib/supabase'
 import { PHASES, getPhase } from '@/lib/iperka'
 import { buildSchedule } from '@/lib/schedule'
@@ -26,7 +26,12 @@ async function uidOrThrow(): Promise<string> {
 }
 
 function check<T>(res: { data: T; error: { message: string } | null }): T {
-  if (res.error) throw new Error(res.error.message)
+  if (res.error) {
+    if (res.error.message.includes('row-level security')) {
+      throw new Error('Keine Berechtigung. Bitte melde dich ab und erneut an.')
+    }
+    throw new Error(res.error.message)
+  }
   return res.data
 }
 

@@ -14,7 +14,7 @@ interface Props {
 export function AddToCalendarButton({ events, filename, className, label }: Props) {
   const [busy, setBusy] = useState(false)
   const desktop = isDesktop()
-  const text = label ?? (desktop ? 'Zu Outlook hinzufuegen' : 'In Kalender (.ics)')
+  const text = label ?? (desktop ? 'Zu Outlook hinzufügen' : 'In Kalender (.ics)')
 
   async function run() {
     if (events.length === 0) return
@@ -31,7 +31,7 @@ export function AddToCalendarButton({ events, filename, className, label }: Prop
       className={className ?? 'btn-outline'}
       onClick={run}
       disabled={busy || events.length === 0}
-      title={desktop ? 'Termine direkt in Outlook oeffnen' : 'Kalenderdatei herunterladen (Outlook/Google/Apple)'}
+      title={desktop ? 'Termine direkt in Outlook öffnen' : 'Kalenderdatei herunterladen (Outlook/Google/Apple)'}
     >
       {busy ? <Spinner className="h-4 w-4" /> : <CalendarPlus className="h-4 w-4" />}
       {text}

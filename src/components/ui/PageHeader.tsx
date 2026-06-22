@@ -20,7 +20,7 @@ export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
   )
 }
 
-/** Platzhalterseite mit konsistentem Look fuer noch nicht gebaute Bereiche. */
+/** Platzhalterseite mit konsistentem Look für noch nicht gebaute Bereiche. */
 export function PlaceholderPage({
   title,
   subtitle,
@@ -39,7 +39,7 @@ export function PlaceholderPage({
         icon={icon}
         title="Dieser Bereich wird gerade gebaut"
         description={
-          note ?? 'Hier entsteht die Funktion in einem der naechsten Schritte. Das Grundgeruest steht bereits.'
+          note ?? 'Hier entsteht die Funktion in einem der nächsten Schritte. Das Grundgerüst steht bereits.'
         }
       />
     </>

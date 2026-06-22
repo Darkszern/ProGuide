@@ -44,7 +44,7 @@ const TEMPLATES: Record<string, TemplateSpec> = {
   Quellenliste: {
     title: 'Quellenliste',
     blocks: [
-      { kind: 'p', text: 'Notiere jede Quelle sofort mit vollstaendiger Angabe.' },
+      { kind: 'p', text: 'Notiere jede Quelle sofort mit vollständiger Angabe.' },
       { kind: 'table', head: ['Nr.', 'Quelle / Titel', 'Autor', 'Link / Fundstelle', 'Datum'], rows: 8 },
     ],
   },
@@ -98,13 +98,13 @@ const TEMPLATES: Record<string, TemplateSpec> = {
   'Test-/Pruefprotokoll': {
     title: 'Pruefprotokoll',
     blocks: [
-      { kind: 'table', head: ['Was wird geprueft?', 'Erwartet', 'Ergebnis', 'OK?', 'Massnahme'], rows: 10 },
+      { kind: 'table', head: ['Was wird geprüft?', 'Erwartet', 'Ergebnis', 'OK?', 'Maßnahme'], rows: 10 },
     ],
   },
   'Abgabe-Checkliste': {
     title: 'Abgabe-Checkliste',
     blocks: [
-      { kind: 'bullets', items: ['Dokument vollstaendig (Titelblatt, Inhalt, Quellen)', 'Rechtschreibung geprueft', 'Formatvorgaben eingehalten', 'Alle Anhaenge dabei', 'Abgabeform korrekt (Druck/PDF)', 'Termin eingehalten'] },
+      { kind: 'bullets', items: ['Dokument vollständig (Titelblatt, Inhalt, Quellen)', 'Rechtschreibung geprüft', 'Formatvorgaben eingehalten', 'Alle Anhänge dabei', 'Abgabeform korrekt (Druck/PDF)', 'Termin eingehalten'] },
     ],
   },
   Reflexionsbogen: {
@@ -114,7 +114,7 @@ const TEMPLATES: Record<string, TemplateSpec> = {
       { kind: 'p', text: '' },
       { kind: 'h', text: 'Was war schwierig?' },
       { kind: 'p', text: '' },
-      { kind: 'h', text: 'Was wuerde ich beim naechsten Mal anders machen?' },
+      { kind: 'h', text: 'Was würde ich beim nächsten Mal anders machen?' },
       { kind: 'p', text: '' },
       { kind: 'h', text: 'Fazit (Bezug zum Ziel)' },
       { kind: 'p', text: '' },
@@ -123,7 +123,7 @@ const TEMPLATES: Record<string, TemplateSpec> = {
   'Praesentations-Leitfaden': {
     title: 'Praesentations-Leitfaden',
     blocks: [
-      { kind: 'bullets', items: ['Einstieg / Aufhaenger', 'Ziel des Projekts', 'Vorgehen (IPERKA kurz)', 'Ergebnis zeigen', 'Schwierigkeiten & Loesungen', 'Fazit & Ausblick', 'Fragen'] },
+      { kind: 'bullets', items: ['Einstieg / Aufhänger', 'Ziel des Projekts', 'Vorgehen (IPERKA kurz)', 'Ergebnis zeigen', 'Schwierigkeiten & Lösungen', 'Fazit & Ausblick', 'Fragen'] },
       { kind: 'h', text: 'Notizen / Stichworte' },
       { kind: 'p', text: '' },
     ],

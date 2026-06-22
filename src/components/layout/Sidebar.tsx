@@ -58,7 +58,7 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-soft">
               <Compass className="h-5 w-5" />
             </span>
-            <span className="text-lg font-bold tracking-tight text-ink">ProjectGuide</span>
+            <span className="text-lg font-bold tracking-tight text-ink">ProGuide</span>
           </div>
           <button
             className="rounded-lg p-1.5 text-ink-muted hover:bg-black/[0.04] lg:hidden"

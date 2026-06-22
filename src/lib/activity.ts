@@ -25,6 +25,6 @@ export function activityText(a: Pick<Activity, 'type' | 'payload'>): string {
     case 'member_joined':
       return 'ist dem Projekt beigetreten'
     default:
-      return 'hat eine Aktion ausgefuehrt'
+      return 'hat eine Aktion ausgeführt'
   }
 }

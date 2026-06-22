@@ -27,7 +27,7 @@ export function Login() {
 
   return (
     <AuthShell>
-      <h1 className="text-2xl font-bold text-ink">Willkommen zurueck</h1>
+      <h1 className="text-2xl font-bold text-ink">Willkommen zurück</h1>
       <p className="mt-1 text-sm text-ink-muted">Melde dich an, um deine Projekte zu sehen.</p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -84,14 +84,14 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15">
             <Compass className="h-6 w-6" />
           </span>
-          <span className="text-xl font-bold">ProjectGuide</span>
+          <span className="text-xl font-bold">ProGuide</span>
         </div>
         <div>
           <h2 className="max-w-md text-3xl font-bold leading-tight">
-            Von der ersten Idee bis zur Abgabe – Schritt fuer Schritt.
+            Von der ersten Idee bis zur Abgabe – Schritt für Schritt.
           </h2>
           <p className="mt-4 max-w-md text-white/80">
-            Strukturiert nach der IPERKA-Methode. Mit KI-Unterstuetzung, Zeitplan und Team-Funktionen.
+            Strukturiert nach der IPERKA-Methode. Mit KI-Unterstützung, Zeitplan und Team-Funktionen.
           </p>
           <div className="mt-8 flex flex-wrap gap-2">
             {['Informieren', 'Planen', 'Entscheiden', 'Realisieren', 'Kontrollieren', 'Auswerten'].map(
@@ -104,7 +104,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <p className="flex items-center gap-1.5 text-sm text-white/70">
-          <Sparkles className="h-4 w-4" /> KI-gestuetzt – mit Groq &amp; Gemini
+          <Sparkles className="h-4 w-4" /> KI-gestützt – mit Claude AI
         </p>
       </div>
 
@@ -115,7 +115,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-gradient text-white">
               <Compass className="h-5 w-5" />
             </span>
-            <span className="text-lg font-bold text-ink">ProjectGuide</span>
+            <span className="text-lg font-bold text-ink">ProGuide</span>
           </div>
           {children}
         </div>

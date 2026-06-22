@@ -1,6 +1,6 @@
 // Supabase Edge Function: "ai"
-// Serverseitiger KI-Proxy. Ruft zuerst Groq auf und faellt bei Fehler oder
-// Limit (HTTP 429/5xx) automatisch auf Google Gemini zurueck.
+// Serverseitiger KI-Proxy. Ruft zuerst Groq auf und fällt bei Fehler oder
+// Limit (HTTP 429/5xx) automatisch auf Google Gemini zurück.
 // API-Keys liegen ausschliesslich hier als Function Secrets – nie im Frontend.
 //
 // Deno-Runtime. Lokal testen:  supabase functions serve ai
@@ -56,10 +56,10 @@ async function callClaude(body: RequestBody): Promise<string> {
     .filter((m) => m.role !== 'system')
     .map((m) => ({ role: m.role, content: m.content }))
 
-  // Hinweis: Claude-4-Modelle unterstuetzen kein Assistant-Prefill. JSON wird
-  // ueber die System-Anweisung angefordert und unten robust extrahiert.
+  // Hinweis: Claude-4-Modelle unterstützen kein Assistant-Prefill. JSON wird
+  // über die System-Anweisung angefordert und unten robust extrahiert.
   const system = body.json
-    ? `${systemText}\n\nWichtig: Antworte ausschliesslich mit einem einzigen gueltigen JSON-Objekt, ohne Markdown-Codefences und ohne weiteren Text.`
+    ? `${systemText}\n\nWichtig: Antworte ausschliesslich mit einem einzigen gültigen JSON-Objekt, ohne Markdown-Codefences und ohne weiteren Text.`
     : systemText
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -120,7 +120,7 @@ async function callGroq(body: RequestBody): Promise<string> {
   if (!res.ok) {
     const text = await res.text()
     const err = new Error(`Groq ${res.status}: ${text}`)
-    // Markiere wiederholbare Fehler fuer den Fallback.
+    // Markiere wiederholbare Fehler für den Fallback.
     ;(err as Error & { retryable?: boolean }).retryable =
       res.status === 429 || res.status >= 500
     throw err
@@ -185,7 +185,7 @@ Deno.serve(async (req: Request) => {
   try {
     body = await req.json()
   } catch {
-    return json({ error: 'Ungueltiger JSON-Body' }, 400)
+    return json({ error: 'Ungültiger JSON-Body' }, 400)
   }
 
   if (!Array.isArray(body.messages) || body.messages.length === 0) {

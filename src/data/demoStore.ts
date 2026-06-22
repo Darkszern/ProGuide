@@ -1,5 +1,5 @@
 // Interaktiver Demo-Store (ohne Backend). Persistiert in localStorage, damit
-// angelegte Projekte/Aufgaben einen Reload ueberleben. Spiegelt das
+// angelegte Projekte/Aufgaben einen Reload überleben. Spiegelt das
 // Supabase-Datenmodell und implementiert dieselbe Daten-API wie supabaseApi.
 import type {
   Activity,
@@ -99,7 +99,7 @@ function seed(): DB {
     type: 'single' | 'team'
     completedThrough: number // wie viele Phasen-Checklisten voll erledigt
   }> = [
-    { title: 'Webshop fuer den Schulkiosk', subject: 'Informatik', deadline: inDays(4), current: 'realisieren', type: 'team', completedThrough: 3 },
+    { title: 'Webshop für den Schulkiosk', subject: 'Informatik', deadline: inDays(4), current: 'realisieren', type: 'team', completedThrough: 3 },
     { title: 'Nachhaltige Verpackung', subject: 'Projektmanagement', deadline: inDays(18), current: 'planen', type: 'single', completedThrough: 1 },
     { title: 'Marketingkampagne Pausenkiosk', subject: 'Wirtschaft', deadline: inDays(-2), current: 'kontrollieren', type: 'team', completedThrough: 4 },
   ]
@@ -590,7 +590,7 @@ export const demoApi = {
 
   async uploadFile(projectId: string, file: File): Promise<void> {
     const d = get()
-    // Kleine Dateien als Data-URL einbetten (Download im Demo-Modus moeglich).
+    // Kleine Dateien als Data-URL einbetten (Download im Demo-Modus möglich).
     let dataUrl: string | null = null
     if (file.size <= 1_200_000) {
       dataUrl = await new Promise<string | null>((resolve) => {

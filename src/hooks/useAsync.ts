@@ -7,7 +7,7 @@ interface AsyncState<T> {
   reload: () => void
 }
 
-/** Laedt asynchrone Daten mit Lade-/Fehlerzustand und Reload-Moeglichkeit. */
+/** Lädt asynchrone Daten mit Lade-/Fehlerzustand und Reload-Möglichkeit. */
 export function useAsync<T>(fn: () => Promise<T>, deps: unknown[] = []): AsyncState<T> {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(true)

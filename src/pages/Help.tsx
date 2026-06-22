@@ -7,7 +7,7 @@ export function Help() {
     <>
       <PageHeader
         title="Hilfe"
-        subtitle="So funktioniert ProjectGuide und die IPERKA-Methode."
+        subtitle="So funktioniert ProGuide und die IPERKA-Methode."
       />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -15,8 +15,8 @@ export function Help() {
           <CardHeader title="Was ist IPERKA?" />
           <p className="text-sm leading-relaxed text-ink-soft">
             IPERKA ist eine Methode, um Projekte strukturiert zu bearbeiten. Die sechs Buchstaben
-            stehen fuer die sechs Phasen, die du nacheinander durchlaeufst. ProjectGuide fuehrt dich
-            Schritt fuer Schritt durch jede Phase – mit Checklisten, Vorlagen und einem
+            stehen für die sechs Phasen, die du nacheinander durchläufst. ProGuide führt dich
+            Schritt für Schritt durch jede Phase – mit Checklisten, Vorlagen und einem
             KI-Assistenten.
           </p>
           <ol className="mt-5 space-y-3">
@@ -48,7 +48,7 @@ export function Help() {
             <CardHeader title="Hinweis zur KI" />
             <p className="text-sm text-ink-soft">
               Der KI-Assistent hilft dir beim Denken, ersetzt aber nicht dein eigenes Urteil. KI kann
-              Fehler machen – ueberpruefe wichtige Informationen.
+              Fehler machen – überpruefe wichtige Informationen.
             </p>
           </Card>
         </div>

@@ -19,7 +19,7 @@ export function Templates() {
     }
   }
 
-  // Eindeutige Vorlagen ueber alle Phasen, mit zugehoeriger Phase.
+  // Eindeutige Vorlagen über alle Phasen, mit zugehoeriger Phase.
   const seen = new Set<string>()
   const entries = PHASES.flatMap((phase) =>
     phase.vorlagen
@@ -52,7 +52,7 @@ export function Templates() {
         ))}
       </div>
       <p className="mt-4 text-sm text-ink-muted">
-        Die Vorlagen werden als bearbeitbare .docx-Datei erzeugt – ideal als Startpunkt fuer deine Dokumente.
+        Die Vorlagen werden als bearbeitbare .docx-Datei erzeugt – ideal als Startpunkt für deine Dokumente.
       </p>
     </>
   )

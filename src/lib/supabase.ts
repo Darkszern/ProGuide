@@ -5,8 +5,8 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_tNZrwR
 
 /**
  * Ist Supabase konfiguriert? Solange keine .env-Werte gesetzt sind,
- * laeuft die App im "Demo-/Vorschau-Modus" (UI sichtbar, keine echten
- * Daten). So kann das Grundgeruest auch ohne Backend gestartet werden.
+ * läuft die App im "Demo-/Vorschau-Modus" (UI sichtbar, keine echten
+ * Daten). So kann das Grundgerüst auch ohne Backend gestartet werden.
  */
 export const isSupabaseConfigured =
   Boolean(url) &&
@@ -17,7 +17,7 @@ export const isSupabaseConfigured =
 if (!isSupabaseConfigured) {
   // Nur ein Hinweis – kein harter Fehler, damit das UI startet.
   console.warn(
-    '[ProjectGuide] Supabase ist noch nicht konfiguriert. ' +
+    '[ProGuide] Supabase ist noch nicht konfiguriert. ' +
       'Trage VITE_SUPABASE_URL und VITE_SUPABASE_ANON_KEY in .env ein.',
   )
 }

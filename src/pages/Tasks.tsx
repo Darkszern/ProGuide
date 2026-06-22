@@ -112,7 +112,7 @@ export function Tasks() {
                     <option key={s} value={s}>{statusLabel[s]}</option>
                   ))}
                 </select>
-                <button className="text-ink-muted hover:text-rose-500" onClick={() => remove(t.id)} aria-label="Loeschen">
+                <button className="text-ink-muted hover:text-rose-500" onClick={() => remove(t.id)} aria-label="Löschen">
                   <Trash2 className="h-4 w-4" />
                 </button>
               </div>

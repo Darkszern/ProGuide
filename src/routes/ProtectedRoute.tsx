@@ -4,7 +4,7 @@ import { LoadingScreen } from '@/components/ui/Spinner'
 
 /**
  * Schuetzt App-Routen. Im Demo-Modus (kein Supabase) ist die App frei
- * zugaenglich, damit das Grundgeruest auch ohne Backend sichtbar ist.
+ * zugaenglich, damit das Grundgerüst auch ohne Backend sichtbar ist.
  */
 export function ProtectedRoute() {
   const { session, loading, configured } = useAuth()

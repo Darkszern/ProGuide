@@ -75,7 +75,7 @@ export function PhaseView() {
   }
 
   const systemContext =
-    `Du bist ein hilfreicher Coach fuer Berufsschueler bei einer Projektarbeit nach IPERKA. ` +
+    `Du bist ein hilfreicher Coach für Berufsschüler bei einer Projektarbeit nach IPERKA. ` +
     `Projekt: "${data.projectTitle}". Aktuelle Phase: "${phase.title}" (${phase.short}). ` +
     `Antworte praezise, auf Deutsch, mit konkreten, umsetzbaren Tipps.`
   const quickQuestions = [
@@ -87,7 +87,7 @@ export function PhaseView() {
   return (
     <>
       <Link to={`/projekte/${projectId}`} className="mb-4 inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-ink">
-        <ArrowLeft className="h-4 w-4" /> Zurueck zum Projekt
+        <ArrowLeft className="h-4 w-4" /> Zurück zum Projekt
       </Link>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -129,7 +129,7 @@ export function PhaseView() {
             <div className="mt-2 flex items-center gap-2">
               <input
                 className="input"
-                placeholder="Eigenen Punkt hinzufuegen …"
+                placeholder="Eigenen Punkt hinzufügen …"
                 value={newLabel}
                 onChange={(e) => setNewLabel(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem())}
@@ -167,7 +167,7 @@ export function PhaseView() {
             <PhaseStepper projectId={projectId} current={phase.key} />
             {nextPhase && (
               <Link to={`/projekte/${projectId}/phase/${nextPhase.key}`} className="btn-ghost mt-3 w-full justify-center text-brand-600">
-                Naechste Phase: {nextPhase.title} →
+                Nächste Phase: {nextPhase.title} →
               </Link>
             )}
           </Card>

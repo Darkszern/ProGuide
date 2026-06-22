@@ -1,10 +1,10 @@
 {
   "name": "projectguide",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
-  "description": "ProjectGuide – begleitet Berufsschueler durch Projektarbeiten nach der IPERKA-Methode.",
-  "author": "ProjectGuide",
+  "description": "ProGuide – begleitet Berufsschüler durch Projektarbeiten nach der IPERKA-Methode.",
+  "author": "ProGuide",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",
@@ -57,7 +57,7 @@
   "build": {
     "extends": null,
     "appId": "ch.projectguide.app",
-    "productName": "ProjectGuide",
+    "productName": "ProGuide",
     "directories": {
       "output": "release",
       "buildResources": "build"
@@ -76,7 +76,7 @@
       "perMachine": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "ProjectGuide"
+      "shortcutName": "ProGuide"
     },
     "publish": {
       "provider": "github",

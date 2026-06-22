@@ -42,7 +42,7 @@ export function buildICS(events: CalendarEvent[]): string {
   const lines: string[] = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//ProjectGuide//IPERKA//DE',
+    'PRODID:-//ProGuide//IPERKA//DE',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
   ]

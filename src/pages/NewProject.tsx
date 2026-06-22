@@ -76,7 +76,7 @@ export function NewProject() {
   return (
     <>
       <Link to="/projekte" className="mb-4 inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-ink">
-        <ArrowLeft className="h-4 w-4" /> Zurueck
+        <ArrowLeft className="h-4 w-4" /> Zurück
       </Link>
       <PageHeader
         title="Neues Projekt"
@@ -90,14 +90,14 @@ export function NewProject() {
               <Wand2 className="h-6 w-6" />
             </span>
             <div>
-              <h3 className="font-semibold text-ink">KI-gefuehrtes Onboarding</h3>
+              <h3 className="font-semibold text-ink">KI-geführtes Onboarding</h3>
               <p className="text-sm text-ink-muted">6 Fragen – danach generiert die KI deinen Plan.</p>
             </div>
           </div>
 
           <form onSubmit={handleGenerate} className="space-y-4">
             <Field label="1. Wie lautet das Thema deines Projekts?">
-              <input className="input" required value={answers.title} onChange={(e) => update('title', e.target.value)} placeholder="z.B. Webshop fuer den Schulkiosk" />
+              <input className="input" required value={answers.title} onChange={(e) => update('title', e.target.value)} placeholder="z.B. Webshop für den Schulkiosk" />
             </Field>
             <Field label="2. Was ist das konkrete Ziel?">
               <textarea className="input min-h-[80px]" required value={answers.goal} onChange={(e) => update('goal', e.target.value)} placeholder="Was soll am Ende vorliegen?" />
@@ -157,14 +157,14 @@ export function NewProject() {
             </div>
             {source === 'fallback' && (
               <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-700">
-                Ohne verbundene KI wurde ein bewaehrter Standard-Plan verwendet. Du kannst ihn unten anpassen.
+                Ohne verbundene KI wurde ein bewährter Standard-Plan verwendet. Du kannst ihn unten anpassen.
               </p>
             )}
           </Card>
 
           {answers.deadline && (
             <Card>
-              <CardHeader title="Vorgeschlagener Zeitplan" subtitle="Wochenenden und Schweizer Feiertage grob beruecksichtigt" />
+              <CardHeader title="Vorgeschlagener Zeitplan" subtitle="Wochenenden und Schweizer Feiertage grob berücksichtigt" />
               <SchedulePreview deadline={answers.deadline} />
             </Card>
           )}
@@ -262,7 +262,7 @@ function PhasePlanEditor({
       <div className="mt-2 flex items-center gap-2">
         <input
           className="input"
-          placeholder="Aufgabe hinzufuegen …"
+          placeholder="Aufgabe hinzufügen …"
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           onKeyDown={(e) => {

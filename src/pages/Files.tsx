@@ -95,7 +95,7 @@ function FileList({ projectId }: { projectId: string }) {
         </span>
         <p className="text-sm text-ink-soft">Dateien hierher ziehen oder</p>
         <button className="btn-outline mt-2" onClick={() => inputRef.current?.click()} disabled={uploading}>
-          Datei auswaehlen
+          Datei auswählen
         </button>
         <input ref={inputRef} type="file" multiple className="hidden" onChange={(e) => upload(e.target.files)} />
       </div>
@@ -128,7 +128,7 @@ function FileList({ projectId }: { projectId: string }) {
                 className="text-ink-muted hover:text-brand-600 disabled:opacity-30"
                 onClick={() => download(f.url, f.name)}
                 disabled={!f.url}
-                title={f.url ? 'Herunterladen' : 'Im Demo-Modus nach Reload nicht verfuegbar'}
+                title={f.url ? 'Herunterladen' : 'Im Demo-Modus nach Reload nicht verfügbar'}
               >
                 <Download className="h-4 w-4" />
               </button>
@@ -138,7 +138,7 @@ function FileList({ projectId }: { projectId: string }) {
                   await api.deleteFile(f.id)
                   reload()
                 }}
-                title="Loeschen"
+                title="Löschen"
               >
                 <Trash2 className="h-4 w-4" />
               </button>

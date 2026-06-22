@@ -31,7 +31,7 @@ export function ProjectDetail() {
   return (
     <>
       <Link to="/projekte" className="mb-4 inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-ink">
-        <ArrowLeft className="h-4 w-4" /> Zurueck zu Projekte
+        <ArrowLeft className="h-4 w-4" /> Zurück zu Projekte
       </Link>
 
       <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -81,7 +81,7 @@ export function ProjectDetail() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <CardHeader title="Phasenuebersicht" subtitle="Klicke auf eine Phase, um die Schritt-fuer-Schritt-Fuehrung zu oeffnen." />
+          <CardHeader title="Phasenübersicht" subtitle="Klicke auf eine Phase, um die Schritt-für-Schritt-Führung zu öffnen." />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {PHASES.map((def) => {
               const pv = phases.find((p) => p.phase.key === def.key)

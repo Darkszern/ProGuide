@@ -47,7 +47,7 @@ export function AIChatPanel({ systemContext, quickQuestions = [] }: AIChatPanelP
         {
           role: 'assistant',
           content:
-            'Entschuldigung, die KI ist gerade nicht erreichbar. Bitte versuche es spaeter erneut.',
+            'Entschuldigung, die KI ist gerade nicht erreichbar. Bitte versuche es später erneut.',
         },
       ])
       console.error(err)

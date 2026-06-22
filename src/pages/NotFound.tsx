@@ -10,7 +10,7 @@ export function NotFound() {
       <h1 className="mt-6 text-4xl font-bold text-ink">404</h1>
       <p className="mt-2 text-ink-muted">Diese Seite gibt es nicht.</p>
       <Link to="/dashboard" className="btn-primary mt-6">
-        Zurueck zum Dashboard
+        Zurück zum Dashboard
       </Link>
     </div>
   )

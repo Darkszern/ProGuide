@@ -1,4 +1,4 @@
-// Zentrale Typen fuer das Supabase-Datenmodell.
+// Zentrale Typen für das Supabase-Datenmodell.
 // Bewusst handgepflegt gehalten (kein any), passend zur SQL-Migration.
 
 export type Uuid = string

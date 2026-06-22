@@ -23,7 +23,7 @@ export function Topbar({ onOpenMenu }: { onOpenMenu: () => void }) {
       <button
         className="rounded-lg p-2 text-ink-soft hover:bg-black/[0.04] lg:hidden"
         onClick={onOpenMenu}
-        aria-label="Menue oeffnen"
+        aria-label="Menue öffnen"
       >
         <Menu className="h-5 w-5" />
       </button>

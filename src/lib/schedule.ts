@@ -82,9 +82,9 @@ function countWorkdays(start: Date, end: Date): number {
 }
 
 /**
- * Verteilt die 6 IPERKA-Phasen ueber den Zeitraum von heute bis zur
+ * Verteilt die 6 IPERKA-Phasen über den Zeitraum von heute bis zur
  * Deadline – gewichtet nach Phasen-Aufwand, Wochenenden und Schweizer
- * Feiertage werden grob beruecksichtigt.
+ * Feiertage werden grob berücksichtigt.
  */
 export function buildSchedule(deadline: string, from?: Date): PhaseSchedule[] {
   const start = from ? new Date(from) : new Date()
@@ -92,7 +92,7 @@ export function buildSchedule(deadline: string, from?: Date): PhaseSchedule[] {
   const end = new Date(deadline)
   end.setHours(0, 0, 0, 0)
 
-  // Liste aller verfuegbaren Arbeitstage (als Date-Objekte).
+  // Liste aller verfügbaren Arbeitstage (als Date-Objekte).
   const workdays: Date[] = []
   const cur = new Date(start)
   const holidayCache = new Map<number, Set<string>>()
@@ -109,7 +109,7 @@ export function buildSchedule(deadline: string, from?: Date): PhaseSchedule[] {
   const result: PhaseSchedule[] = []
 
   // Fallback: zu wenig Zeit -> jede Phase bekommt mind. einen Tag,
-  // ueber den verfuegbaren Zeitraum gleichmaessig verteilt.
+  // über den verfügbaren Zeitraum gleichmäßig verteilt.
   if (total < PHASES.length) {
     const span = Math.max(1, Math.ceil((end.getTime() - start.getTime()) / 86400000))
     const per = span / PHASES.length

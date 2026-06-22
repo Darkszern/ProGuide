@@ -1,4 +1,4 @@
-// Electron-Hauptprozess. Laedt im Dev den Vite-Server, im gebauten Programm
+// Electron-Hauptprozess. Lädt im Dev den Vite-Server, im gebauten Programm
 // die statischen Dateien aus dist/. Bietet IPC zum Oeffnen von .ics-Dateien
 // (Outlook/Kalender) und einen automatischen Updater (electron-updater).
 const { app, BrowserWindow, ipcMain, shell } = require('electron')
@@ -17,7 +17,7 @@ function createWindow() {
     minHeight: 600,
     backgroundColor: '#f7f8fb',
     autoHideMenuBar: true,
-    title: 'ProjectGuide',
+    title: 'ProGuide',
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -37,21 +37,21 @@ function createWindow() {
     mainWindow = null
   })
 
-  // Externe Links im Standardbrowser oeffnen, nicht im App-Fenster.
+  // Externe Links im Standardbrowser öffnen, nicht im App-Fenster.
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url)
     return { action: 'deny' }
   })
 }
 
-// --- IPC: .ics-Datei schreiben und mit der Standard-App (Outlook) oeffnen ---
+// --- IPC: .ics-Datei schreiben und mit der Standard-App (Outlook) öffnen ---
 ipcMain.handle('open-ics', async (_event, { filename, content }) => {
   try {
     const safe = String(filename || 'termine.ics').replace(/[^a-zA-Z0-9._-]+/g, '_')
     const filePath = path.join(os.tmpdir(), `projectguide-${Date.now()}-${safe}`)
     fs.writeFileSync(filePath, content, 'utf8')
     const result = await shell.openPath(filePath)
-    // shell.openPath gibt bei Erfolg einen leeren String zurueck.
+    // shell.openPath gibt bei Erfolg einen leeren String zurück.
     if (result) return { ok: false, error: result }
     return { ok: true }
   } catch (err) {
@@ -67,12 +67,12 @@ function setupAutoUpdate() {
   try {
     const { autoUpdater } = require('electron-updater')
     autoUpdater.autoDownload = true
-    autoUpdater.on('update-available', () => console.log('[update] verfuegbar – wird geladen'))
+    autoUpdater.on('update-available', () => console.log('[update] verfügbar – wird geladen'))
     autoUpdater.on('update-downloaded', () => console.log('[update] geladen – beim Neustart aktiv'))
     autoUpdater.on('error', (e) => console.warn('[update] Fehler:', e == null ? 'unbekannt' : e.message))
     autoUpdater.checkForUpdatesAndNotify()
   } catch (err) {
-    console.warn('[update] Updater nicht verfuegbar:', String(err))
+    console.warn('[update] Updater nicht verfügbar:', String(err))
   }
 }
 

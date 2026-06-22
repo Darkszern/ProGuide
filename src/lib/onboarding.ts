@@ -27,8 +27,8 @@ function fallbackPlan(): Record<PhaseKey, string[]> {
 
 /**
  * Erzeugt anhand der Onboarding-Antworten einen IPERKA-Plan mit Checklisten
- * pro Phase. Nutzt die KI (Groq/Gemini ueber Edge Function); faellt bei
- * Fehler oder im Demo-Modus auf sinnvolle Standard-Checklisten zurueck.
+ * pro Phase. Nutzt die KI (Claude AI über Edge Function); fällt bei
+ * Fehler oder im Demo-Modus auf sinnvolle Standard-Checklisten zurück.
  */
 export async function generatePlan(answers: OnboardingAnswers): Promise<GeneratedPlan> {
   const fallback = fallbackPlan()
@@ -36,8 +36,8 @@ export async function generatePlan(answers: OnboardingAnswers): Promise<Generate
   const phaseList = PHASES.map((p) => `- ${p.key} (${p.title}): ${p.short}`).join('\n')
   const system =
     'Du bist eine erfahrene Lehrperson und Projektcoach an einer Berufsschule. ' +
-    'Du erstellst fachlich passende, konkrete Checklisten fuer eine Projektarbeit nach der ' +
-    'IPERKA-Methode. Antworte AUSSCHLIESSLICH mit gueltigem JSON, ohne Erklaerung.'
+    'Du erstellst fachlich passende, konkrete Checklisten für eine Projektarbeit nach der ' +
+    'IPERKA-Methode. Antworte AUSSCHLIESSLICH mit gültigem JSON, ohne Erklärung.'
   const user =
     `Projekt-Thema: ${answers.title}\n` +
     `Ziel: ${answers.goal}\n` +
@@ -45,10 +45,10 @@ export async function generatePlan(answers: OnboardingAnswers): Promise<Generate
     `Fach: ${answers.subject || '–'}\n` +
     `Art: ${answers.type === 'team' ? 'Gruppenarbeit' : 'Einzelarbeit'}\n` +
     `Abgabetermin: ${answers.deadline || 'offen'}\n\n` +
-    `Erstelle fuer jede der 6 IPERKA-Phasen 3 bis 5 konkrete, auf das Thema zugeschnittene ` +
-    `Checklisten-Aufgaben (kurze Imperativ-Saetze, Deutsch).\n` +
-    `Phasen (Schluessel verwenden):\n${phaseList}\n\n` +
-    `Antwortformat (genau diese Schluessel):\n` +
+    `Erstelle für jede der 6 IPERKA-Phasen 3 bis 5 konkrete, auf das Thema zugeschnittene ` +
+    `Checklisten-Aufgaben (kurze Imperativ-Sätze, Deutsch).\n` +
+    `Phasen (Schlüssel verwenden):\n${phaseList}\n\n` +
+    `Antwortformat (genau diese Schlüssel):\n` +
     `{"informieren":["..."],"planen":["..."],"entscheiden":["..."],` +
     `"realisieren":["..."],"kontrollieren":["..."],"auswerten":["..."]}`
 
