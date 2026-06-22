@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 
-const url = import.meta.env.VITE_SUPABASE_URL
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+const url = import.meta.env.VITE_SUPABASE_URL || 'https://rynnrvkgoldxqjqaovuf.supabase.co'
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_tNZrwRZhzC4TUQ9vbugf6Q_BLiUT_uw'
 
 /**
  * Ist Supabase konfiguriert? Solange keine .env-Werte gesetzt sind,
